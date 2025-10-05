@@ -26,7 +26,7 @@ function CategoriesDashboard() {
       display="flex"
       justifyContent="center"
     >
-      <Image width="100%" src="/public/images/headerImage/3cc943ca7e210f637fc0504b7d93cd207df744c2.png" alt="Banner 2" trans={true} />
+      <Image width="100%" src="/images/headerImage/3cc943ca7e210f637fc0504b7d93cd207df744c2.png" alt="Banner 2" trans={true} />
     </Box>
   </Dashboard>
   );

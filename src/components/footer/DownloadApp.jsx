@@ -25,7 +25,7 @@ export default function DownloadApp() {
         {/* QR Code */}
         <Box sx={{ flex: "0 0 80px" }}>
           <img
-            src="/public/images/footerImages/991387c05dd6d44594e01b675513068803e2426d.jpg"
+            src="/images/footerImages/991387c05dd6d44594e01b675513068803e2426d.jpg"
             alt="QR Code"
             style={{
               width: "100%",
@@ -47,8 +47,8 @@ export default function DownloadApp() {
           }}
         >
           {[
-            "/public/images/footerImages/a61d4c7110b18ab55a1e1a07ebf54a46ebb07284.png",
-            "/public/images/footerImages/38932d5accb54c528f9bcf326ca48ea29bd6d890.png",
+            "/images/footerImages/a61d4c7110b18ab55a1e1a07ebf54a46ebb07284.png",
+            "/images/footerImages/38932d5accb54c528f9bcf326ca48ea29bd6d890.png",
           ].map((src, i) => (
             <Box key={i} sx={{ flex: 1 }}>
               <img

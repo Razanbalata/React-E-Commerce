@@ -17,7 +17,7 @@ export default function ImagesSection() {
           }}
         >
           <ImageCard
-            img="/public/images/headerImage/1c360f790c1817d3afa266b3c9f8c81ff0ed4428.png"
+            img="/images/headerImage/1c360f790c1817d3afa266b3c9f8c81ff0ed4428.png"
             title="iPhone 14 Series"
             subtitle="PlayStation 5"
             text="Black and White version of the PS5 coming out on sale."
@@ -35,7 +35,7 @@ export default function ImagesSection() {
         >
           <Box sx={{ flex: 1, backgroundColor: "black" }}>
             <ImageCard
-              img="/public/images/headerImage/455c8d6408463f7e8f57dd3048a2444dbfa0cb90.jpg"
+              img="/images/headerImage/455c8d6408463f7e8f57dd3048a2444dbfa0cb90.jpg"
               title="iPhone 14 Series"
               flip
               subtitle="PlayStation 5"
@@ -47,7 +47,7 @@ export default function ImagesSection() {
           <Box sx={{ display: "flex", gap: 2.5}}>
             <Box sx={{ flex: 1,backgroundColor:"black",alignItems:"flex-end" ,display:"flex"}}>
               <ImageCard
-                img="/public/images/headerImage/e5659d572977438364a41d7e8c9d1e9a794d43ed.png"
+                img="/images/headerImage/e5659d572977438364a41d7e8c9d1e9a794d43ed.png"
                 title="iPhone 14 Series"
                 subtitle="Speakers"
                 text="Amazon wireless speakers"
@@ -56,7 +56,7 @@ export default function ImagesSection() {
             </Box>
             <Box sx={{ flex: 1,backgroundColor:"black" }}>
               <ImageCard
-                img="/public/images/headerImage/15315cd15102562cf220504d288fa568eaa816dd.png"
+                img="/images/headerImage/15315cd15102562cf220504d288fa568eaa816dd.png"
                 title="iPhone 14 Series"
                 subtitle="Perfume"
                 text="GUCCI INTENSE OUD EDP"

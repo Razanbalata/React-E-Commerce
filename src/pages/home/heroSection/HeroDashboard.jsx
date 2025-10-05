@@ -99,7 +99,7 @@ const HeroDashboard = () => (
         <Image
           width="90%"
           sx={{ boxShadow: "0 10px 30px rgba(0,0,0,0.2)", borderRadius: 2 }}
-          src="/public/images/headerImage/dc40ba897215f42e5883a64157f0aa3a4d1a866a.jpg"
+          src="/images/headerImage/dc40ba897215f42e5883a64157f0aa3a4d1a866a.jpg"
           alt="Banner 1"
         />
       </Box>
