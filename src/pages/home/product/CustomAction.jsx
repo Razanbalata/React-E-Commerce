@@ -9,14 +9,14 @@ export default function CustomAction({ useIcon = true }) {
   return (
     <Box>
       {useIcon ? (
-        <>
+        <Box display={{xs:"none",sm:"flex"}}>
           <ArrowButton direction="left">
             <ArrowBackIcon />
           </ArrowButton>
           <ArrowButton direction="right">
             <ArrowForwardIcon />
           </ArrowButton>
-        </>
+        </Box>
       ) : (
         <ButtonCom value="View All" />
       )}
