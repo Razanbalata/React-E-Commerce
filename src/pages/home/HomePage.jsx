@@ -10,29 +10,20 @@ import TodaySection from "../../pages/home/product/TodaySection";
 import ThisMonthSection from "../../pages/home/product/ThisMonthSection";
 import OurProductsSection from "../../pages/home/product/OurProductsSection";
 import CategoriesDashboard from "../../pages/home/arrival/CategoriesDashboard";
+import Layout from "../layout";
 
 function HomePage() {
   return (
-    <div style={{overflow:"hidden"}}>
-      <HeaderDiv />
-      <Container
-        maxWidth="lg" 
-        sx={{
-          width: { xs: "100%", sm: "100%", md: "100%" }, 
-          px: { xs: 0, sm: 0, md: 2 }, 
-        }}
-      >
-        <HeroSection />
-        <TodaySection />
-        <CategoriesDiv />
-        <ThisMonthSection />
-        <CategoriesDashboard />
-        <OurProductsSection />
-        <ImagesSection />
-        <FullServices />
-      </Container>
-      <Footer />
-    </div>
+    <Layout>
+      <HeroSection />
+      <TodaySection />
+      <CategoriesDiv />
+      <ThisMonthSection />
+      <CategoriesDashboard />
+      <OurProductsSection />
+      <ImagesSection />
+      <FullServices />
+    </Layout>
   );
 }
 
