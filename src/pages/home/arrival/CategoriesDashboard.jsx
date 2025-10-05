@@ -4,7 +4,7 @@ import { Box } from '@mui/material';
 import TextCom from '../heroSection/TextCom';
 import Image from '../arrival/Image';
 import TimerDisplay from '../product/TimerDisplay';
-import ButtonCom from '../buttons/ButtonCom';
+import ButtonCom from '../../../components/buttons/ButtonCom';
 function CategoriesDashboard() {
   return (
     <Dashboard padding={{ x: 0, y: 10 }} pb={4} width='100%'>

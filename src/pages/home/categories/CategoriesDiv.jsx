@@ -2,7 +2,7 @@ import { Box, Divider } from "@mui/material";
 import React from "react";
 import SectionTitle from "../product/SectionTitle";
 import FlashSaleHeader from "../product/FlashSaleTimer";
-import CategoriesRow from "../categories/CategoriesRow";
+import CategoriesRow from "./CategoriesRow";
 import {Container} from "@mui/material";
 
 function CategoriesDiv() {

@@ -1,8 +1,8 @@
 import React from "react";
-import SectionTitle from "../product/SectionTitle";
+import SectionTitle from "./SectionTitle";
 import { Box, Container, Divider } from "@mui/material";
-import ButtonCom from "../buttons/ButtonCom";
-import FlashSaleHeader from "../product/FlashSaleTimer";
+import ButtonCom from "../../../components/buttons/ButtonCom";
+import FlashSaleHeader from "./FlashSaleTimer";
 
 function ProductSection({
   title,

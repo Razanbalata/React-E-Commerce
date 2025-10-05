@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import CustomAction from "../product/CustomAction";
+import CustomAction from "./CustomAction";
 
 function FlashSaleHeader({
   children,

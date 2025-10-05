@@ -1,8 +1,8 @@
-import ProductSection from "../product/ProductSection";
-import ProductGrid from "../product/ProductGrid";
-import ColorBadge from "../product/Badge";
-import { sectionOneProducts } from '../data/data';
-import TimerDisplay from "../product/TimerDisplay";
+import ProductSection from "./ProductSection";
+import ProductGrid from "./ProductGrid";
+import ColorBadge from "./Badge";
+import { sectionOneProducts } from '../../../components/data/data';
+import TimerDisplay from "./TimerDisplay";
 
 export default function TodaySection() {
   return (

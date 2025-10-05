@@ -1,6 +1,6 @@
 import ProductSection from "../product/ProductSection";
 import ProductGrid from "../product/ProductGrid";
-import { sectionTwoProducts } from '../data/data';
+import { sectionTwoProducts } from '../../../components/data/data';
 export default function ThisMonthSection() {
   return (
     <ProductSection

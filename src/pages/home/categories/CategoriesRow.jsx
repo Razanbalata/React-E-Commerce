@@ -1,14 +1,14 @@
 import React from "react";
 import { Box } from "@mui/material";
-import CategoryCard from "../categories/CategoryCard";
+import CategoryCard from "./CategoryCard";
 
 // استدعاء الأيقونات
-import Phone from "../icons/Phone";
-import Computer from "../icons/Computer";
-import SmartWatch from "../icons/SmartWatch";
-import Camera from "../icons/Camera";
-import HeadFones from "../icons/HeadFones";
-import GamingIcon from "../icons/GamingIcon";
+import Phone from "../../../components/icons/Phone";
+import Computer from "../../../components/icons/Computer";
+import SmartWatch from "../../../components/icons/SmartWatch";
+import Camera from "../../../components/icons/Camera";
+import HeadFones from "../../../components/icons/HeadFones";
+import GamingIcon from "../../../components/icons/GamingIcon";
 
 const categories = [
   { id: 1, name: "Phones", icon: Phone },

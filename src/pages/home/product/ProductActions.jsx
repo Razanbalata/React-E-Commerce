@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
-import WishlistIcon from "../icons/WishlistIcon";
-import VisibleEye from "../icons/VisibleEye";
+import WishlistIcon from "../../../components/icons/WishlistIcon";
+import VisibleEye from "../../../components/icons/VisibleEye";
 
 export default function ProductActions() {
   return (

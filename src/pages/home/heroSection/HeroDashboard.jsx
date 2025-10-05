@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import Dashboard from "../heroSection/Dashboard";
+import Dashboard from "./Dashboard";
 import TextCom from "./TextCom";
 import Pagination from "./Pagination";
 import Image from "../arrival/Image";

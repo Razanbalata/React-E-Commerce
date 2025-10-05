@@ -1,4 +1,4 @@
-import RedBar from "../product/RedBar";
+import RedBar from "./RedBar";
 import { Box, Typography } from "@mui/material";
 
 export default function SectionTitle({ text }) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardContent, Typography } from "@mui/material";
-import CategoryIcon from "../categories/CategoryIcon";
+import CategoryIcon from "./CategoryIcon";
 
 export default function CategoryCard({ name, Icon }) {
   return (

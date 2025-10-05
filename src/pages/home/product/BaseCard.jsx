@@ -1,8 +1,8 @@
 import React from "react";
 import { Card, CardContent, Box, Typography, Rating } from "@mui/material";
-import ProductImage from "../product/ProductImage";
-import ProductActions from "../product/ProductActions";
-import ProductPrice from "../product/ProductPrice";
+import ProductImage from "./ProductImage";
+import ProductActions from "./ProductActions";
+import ProductPrice from "./ProductPrice";
 
 export default function BaseCard({ product, children, variant = "default" }) {
   return (

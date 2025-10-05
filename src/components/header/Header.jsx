@@ -2,7 +2,6 @@ import React from "react";
 import { Box, Divider } from "@mui/material";
 import HeaderLeft from "../header/HeaderLeft";
 import HeaderRight from "../header/HeaderRight";
-import HoverUnderline from "../ui/HoverUnderline";
 
 const Header = () => {
   return (

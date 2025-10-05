@@ -1,6 +1,6 @@
 import ProductSection from "../product/ProductSection";
 import ProductGrid from "../product/ProductGrid";
-import {sectionThreeProducts} from '../data/data'
+import {sectionThreeProducts} from '../../../components/data/data'
 import { Box } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import ColorBadge from "../product/Badge";
