@@ -1,6 +1,7 @@
 import React from "react";
 import { Box } from "@mui/material";
-import NavItem from "../header/NavItem"; 
+import NavItem from "../header/NavItem";
+import { Link } from "react-router-dom";
 
 const navItems = ["Home", "Contact", "About", "Sign Up"];
 
@@ -10,15 +11,18 @@ const NavigationMenu = ({ direction = "row", onItemClick }) => {
       component="nav"
       sx={{
         display: "flex",
-        flexDirection: direction, 
+        flexDirection: direction,
         gap: 2,
       }}
     >
-      {navItems.map((item, index) => (
-        <Box key={index} onClick={onItemClick}>
+      {navItems.map((item, index) => {
+        const path = item.toLowerCase() === "home" ? "/" : "/" + item.toLowerCase()
+       return( 
+       <Link to={path} key={index} onClick={onItemClick}>
           <NavItem title={item} />
-        </Box>
-      ))}
+        </Link>
+        );
+      })}
     </Box>
   );
 };
