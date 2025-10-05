@@ -33,7 +33,7 @@ const TextCom = ({
         fontSize={{ xs: 40, sm: 36, lg: size || 50 }}
         fontWeight={500}
         lineHeight={1.2}
-        width={{xs:"62%",sm:"100%"}}
+        width={{xs:"89%",sm:"100%"}}
       >
         {text}
       </Typography>

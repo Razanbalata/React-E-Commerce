@@ -44,7 +44,7 @@ const HeroDashboard = () => (
         zIndex={2}
         sx={{
           position: "relative",
-          top: { xs: "26%", sm: "0" },
+          top: { xs: "10%", sm: "0" },
           transform: { xs: "translateY(-20%)", sm: "none" },
           px: { xs: 3, sm: 0 },
           transition: "all 0.5s ease",
