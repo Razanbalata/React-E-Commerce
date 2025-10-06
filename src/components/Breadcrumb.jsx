@@ -8,7 +8,7 @@ const Breadcrumb = ({ path = ["Home", "Contact"] }) => {
         <React.Fragment key={idx}>
           {idx !== 0 && <Typography>/</Typography>}
           {idx < path.length - 1 ? (
-            <Link href="#" underline="hover">{item}</Link>
+            <Link href="#" underline="hover" color="#000">{item}</Link>
           ) : (
             <Typography fontWeight="bold">{item}</Typography>
           )}

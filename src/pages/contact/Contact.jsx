@@ -8,10 +8,22 @@ import Breadcrumb from "../../components/Breadcrumb";
 function Contact() {
   return (
     <Layout>
-      <Box padding={"50px 23px"}>
+      <Box
+        padding={{ xs: "50px 30px", md: "50px 0px" }}
+        width={"100%"}
+        display={"flex"}
+        flexDirection={"column"}
+      >
         <Breadcrumb path={["Home", "Contact"]} />
-        <LeftSide />
-        <RightSide />
+        <Box
+          display="flex"
+          flexDirection={{ xs: "column", sm: "column", md: "row" }} // 👈
+          alignItems={{ xs: "center", md: "flex-start" }}
+          gap={3}
+        >
+          <LeftSide />
+          <RightSide />
+        </Box>
       </Box>
     </Layout>
   );
