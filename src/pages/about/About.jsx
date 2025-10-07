@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../layout";
+import Layout from "../Layout";
 import { Box } from "@mui/material";
 import Breadcrumb from "../../components/Breadcrumb";
 import AboutHero from "./AboutHero";

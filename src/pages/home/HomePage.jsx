@@ -10,7 +10,7 @@ import TodaySection from "../../pages/home/product/TodaySection";
 import ThisMonthSection from "../../pages/home/product/ThisMonthSection";
 import OurProductsSection from "../../pages/home/product/OurProductsSection";
 import CategoriesDashboard from "../../pages/home/arrival/CategoriesDashboard";
-import Layout from "../layout";
+import Layout from "../Layout";
 import ScrollTopButton from "./ScrollTopButton";
 
 function HomePage() {

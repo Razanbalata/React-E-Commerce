@@ -2,8 +2,8 @@ import { Box } from "@mui/material";
 import React from "react";
 import LeftSide from "./LeftSide";
 import RightSide from "./RightSide";
-import Layout from "../layout";
 import Breadcrumb from "../../components/Breadcrumb";
+import Layout from "../Layout";
 
 function Contact() {
   return (
