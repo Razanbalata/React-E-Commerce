@@ -16,11 +16,16 @@ const NavigationMenu = ({ direction = "row", onItemClick }) => {
       }}
     >
       {navItems.map((item, index) => {
-        const path = item.toLowerCase() === "home" ? "/" : "/" + item.toLowerCase()
-       return( 
-       <Link to={path} key={index} onClick={onItemClick}>
-          <NavItem title={item} />
-        </Link>
+        // تحويل النص لمسار صالح
+        const path =
+          item.toLowerCase().replace(/\s+/g, "-") === "home"
+            ? "/"
+            : "/" + item.toLowerCase().replace(/\s+/g, "");
+
+        return (
+          <Link to={path} key={index} onClick={onItemClick}>
+            <NavItem title={item} />
+          </Link>
         );
       })}
     </Box>

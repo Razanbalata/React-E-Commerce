@@ -41,7 +41,6 @@ function RightSide() {
       <form onSubmit={(e)=>{
         alert("sbmit")
         e.preventDefault()
-        console.log(data)
       }}>
         {/* الحقول العلوية */}
         <Box
