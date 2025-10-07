@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box } from '@mui/material';
 const Image = ({width="50%", src, alt = '', trans = false }) => (
-  <Box width={width} bgcolor="black" padding={{xs:"25px",sm:0}}>
+  <Box width={width} bgcolor="black" padding={{xs:"25px",sm:0}} height={"100%"}>
     <img
       src={src}
       alt={alt}

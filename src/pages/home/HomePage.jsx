@@ -23,7 +23,7 @@ function HomePage() {
       <CategoriesDashboard />
       <OurProductsSection />
       <ImagesSection />
-      <FullServices />
+      <FullServices bordered={"false"}/>
       <ScrollTopButton/>
     </Layout>
   );

@@ -4,8 +4,8 @@ import HeadsetMicIcon from "@mui/icons-material/HeadsetMic";
 import WorkspacePremiumIcon from "@mui/icons-material/WorkspacePremium";
 import ServiceCard from "./ServiceCard";
 
-export default function FullServices() {
-  const services = [
+export default function FullServices({ services, sx = {} , bordered }) {
+  const baseServices = [
     {
       title: "Fast Delivery",
       desc: "Get your products delivered quickly and safely.",
@@ -23,23 +23,26 @@ export default function FullServices() {
     },
   ];
 
+  const finalServices = services || baseServices;
+
   return (
     <Box
       component="section"
       sx={{
         display: "grid",
         gridTemplateColumns: {
-          xs: "1fr", 
-          sm: "1fr", 
-          md: "1fr 1fr 1fr", 
+          xs: "1fr",
+          sm: "1fr",
+          md: "repeat(auto-fit, minmax(250px, 1fr))",
         },
         gap: 4,
         py: 10,
-        justifyItems: "center", 
+        justifyItems: "center",
+        ...sx,
       }}
     >
-      {services.map((service, index) => (
-        <ServiceCard key={index} {...service} />
+      {finalServices.map((service, index) => (
+        <ServiceCard key={index} {...service} bordered={bordered}  />
       ))}
     </Box>
   );

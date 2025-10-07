@@ -63,9 +63,11 @@ function CategoriesDashboard() {
             title="Categories"
             text="Enhance Your Music Experience"
             showIcon={false}
-            size={{ xs: 20, sm: 30, lg: 50 }} // حجم أصغر على الجوال
+            size={ 50 } // حجم أصغر على الجوال
           >
-            <TimerDisplay justify="flex-start" variant="circle" />
+            <Box display={{xs:"none",sm:"flex"}}>
+              <TimerDisplay justify="flex-start" variant="circle" />
+            </Box>
             <Box sx={{ paddingTop: "30px" }}>
               <ButtonCom
                 value="Shop Now"
@@ -77,6 +79,7 @@ function CategoriesDashboard() {
                     boxShadow: "0 5px 15px rgba(0,0,0,0.2)",
                   },
                 }}
+                showOnMobile
               />
             </Box>
           </TextCom>

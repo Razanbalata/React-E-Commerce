@@ -3,7 +3,7 @@ import { MobileStepper, Box } from "@mui/material";
 
 export default function Pagination({ steps = 5, activeStep = 2 }) {
   return (
-    <Box position="absolute" bottom="3%" left="40%">
+    <Box position="absolute" bottom="3%" left="45%">
       <MobileStepper
         variant="dots"
         steps={steps}

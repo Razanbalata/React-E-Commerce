@@ -5,6 +5,7 @@ import TextCom from "./TextCom";
 import Pagination from "./Pagination";
 import Image from "../arrival/Image";
 import { ChevronRight } from "@mui/icons-material";
+import TimerDisplay from "../product/TimerDisplay";
 
 const HeroDashboard = () => (
   <Dashboard width="80%" padding={{ x: 4, y: 4 }}>
@@ -12,7 +13,7 @@ const HeroDashboard = () => (
       display="flex"
       flexDirection={{ xs: "column", sm: "row" }}
       alignItems="center"
-      justifyContent="space-between"
+      justifyContent={{xs:"center",sm:"space-between"}}
       position="relative"
       sx={{
         backgroundSize: "cover",
@@ -44,7 +45,7 @@ const HeroDashboard = () => (
         zIndex={2}
         sx={{
           position: "relative",
-          top: { xs: "10%", sm: "0" },
+          top: { xs: "0%", sm: "0" },
           transform: { xs: "translateY(-20%)", sm: "none" },
           px: { xs: 3, sm: 0 },
           transition: "all 0.5s ease",
@@ -65,6 +66,9 @@ const HeroDashboard = () => (
           paddLeft={8}
           size={52}
         >
+          <Box display={{xs:"flex",sm:"none"}}>
+            <TimerDisplay variant="circle" justify="flex-start"/>
+          </Box>
           <Typography
             component="a"
             href="#"
@@ -82,8 +86,10 @@ const HeroDashboard = () => (
               },
             }}
           >
+            
             Shop Now <ChevronRight sx={{ ml: 0.5 }} />
           </Typography>
+          
         </TextCom>
       </Box>
 

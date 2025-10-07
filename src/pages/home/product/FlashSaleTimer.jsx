@@ -25,7 +25,9 @@ function FlashSaleHeader({
         <Typography variant="h5" fontSize={30} fontWeight="bold" color="#000">
           {title}
         </Typography>
-        {children}
+        <Box display={{xs:"none",sm:"flex"}}>
+          {children}
+        </Box>
       </Box>
 
       {/* Right: Navigation Arrows or Button */}
