@@ -30,7 +30,7 @@ const TextCom = ({
     {text && (
       <Typography
         variant={type}
-        fontSize={{ xs: "2.5rem",sm:"2.2rem",md:"3rem",lg: size || "50 !important" }}
+        fontSize={{ xs: "2.5rem",sm:"2.2rem",md:size || "3rem",lg: size || "50 !important" }}
         fontWeight={500}
         lineHeight={1.2}
         width={{xs:"89%",sm:"100%"}}

@@ -1,17 +1,44 @@
 import React from "react";
-import { Box } from "@mui/material";
-import WishlistIcon from "../../../components/icons/WishlistIcon";
-import VisibleEye from "../../../components/icons/VisibleEye";
+import { IconButton, Tooltip, Box } from "@mui/material";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import DeleteIcon from "@mui/icons-material/Delete";
 
-export default function ProductActions() {
-  return (
-    <Box className="absolute top-2 right-2 flex flex-col gap-1">
-    <Box className="bg-white p-1 rounded-full flex items-center justify-center shadow">
-      <WishlistIcon />
-    </Box>
-    <Box className="bg-white p-1 rounded-full flex items-center justify-center shadow">
-      <VisibleEye />
-    </Box>
-  </Box>
-  );
+export default function ProductActions({ type = "wishlist" }) {
+  const iconStyle = {
+    backgroundColor: "white",
+    color: "black",
+    p: 0.5,          // padding صغير
+    borderRadius: "50%", 
+    boxShadow: 1,    // ظل خفيف
+  };
+
+  if (type === "wishlist") {
+    return (
+      <Box display="flex" flexDirection="column" gap={1}>
+        <Tooltip title="Add to Wishlist">
+          <IconButton sx={iconStyle}>
+            <FavoriteBorderIcon />
+          </IconButton>
+        </Tooltip>
+        <Tooltip title="View Details">
+          <IconButton sx={iconStyle}>
+            <VisibilityIcon />
+          </IconButton>
+        </Tooltip>
+      </Box>
+    );
+  }
+
+  if (type === "delete") {
+    return (
+      <Tooltip title="Remove Item">
+        <IconButton sx={iconStyle} color="inherit">
+          <DeleteIcon />
+        </IconButton>
+      </Tooltip>
+    );
+  }
+
+  return null;
 }

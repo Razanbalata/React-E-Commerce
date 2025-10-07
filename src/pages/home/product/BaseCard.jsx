@@ -1,68 +1,43 @@
 import React from "react";
-import { Card, CardContent, Box, Typography, Rating } from "@mui/material";
+import { Card, CardContent, Box, Typography } from "@mui/material";
 import ProductImage from "./ProductImage";
-import ProductActions from "./ProductActions";
-import ProductPrice from "./ProductPrice";
 
-export default function BaseCard({ product, children, variant = "default" }) {
+export default function BaseCard({
+  product,
+  actionsSlot,   // الأكشنز فوق
+  priceSlot,     // السعر الإضافي أو الخصم
+  ratingSlot,    // الريتنج
+  childrenSlot,  // أي محتوى إضافي (مثل البادج)
+}) {
   return (
-    <Card
-      sx={{
-        position: "relative",
-        cursor: "pointer",
-        minWidth: 258, 
-        flexShrink: 0,
-        height:"100%" 
-      }}
-    >
-      <ProductActions />
+    <Card sx={{ position: "relative",height:"322px", minWidth: 258, flexShrink: 0, overflow: "visible" }}>
       <ProductImage src={product.imageSrc} alt={product.imageAlt} />
 
-      <CardContent
-        sx={{
-          "&:last-child": {
-            paddingBottom: 2, 
-          },
-        }}
-      >
-        <Typography
-          variant="subtitle1"
-          component="a"
-          sx={{ textDecoration: "none", color: "text.primary", mb: 1 }}
-        >
-          {product.name}
-        </Typography>
-
-        <Box
-          width="100%"
-          display="flex"
-          flexDirection={variant === "inline" ? "row" : "column"}
-          justifyContent="flex-start"
-          alignItems={variant === "inline" ? "center" : "flex-start"}
-          mb={1}
-        >
-          <Box flex={variant === "inline" ? "0 0 auto" : "none"}>
-            <ProductPrice
-              price={product.originalPrice}
-              originalPrice={product.originalPrice}
-              discount={product.discount}
-            />
-          </Box>
-          <Box
-            flex={variant === "inline" ? "0 0 auto" : "none"}
-            mt={variant === "inline" ? 0 : 0.5}
-          >
-            <Box display="flex" alignItems="center" gap={0.5}>
-              <Rating name="read-only" value={product.rating} readOnly />
-              <Typography variant="body2" color="text.secondary">
-                ({product.ratingCount})
-              </Typography>
-            </Box>
-          </Box>
+      {/* الأكشنز */}
+      {actionsSlot && (
+        <Box sx={{ position: "absolute", top: 8, right: 8, display: "flex", flexDirection: "column", gap: 1 }}>
+          {actionsSlot}
         </Box>
+      )}
 
-        {children}
+      <CardContent sx={{ "&:last-child": { paddingBottom: 2 } }}>
+        <Typography variant="subtitle1" sx={{ mb: 1 }}>{product.name}</Typography>
+
+        {/* السعر العادي */}
+        {/* {product.originalPrice && (
+          <Typography variant="body1" sx={{ fontWeight: 600 }}>${product.originalPrice}</Typography>
+        )} */}
+
+        {/* السعر الإضافي / الخصم */}
+        {priceSlot && <Box mt={0.5}>{priceSlot}</Box>}
+
+        {/* الريتنج */}
+        {ratingSlot && <Box mt={1}>{ratingSlot}</Box>}
+
+        {/* أي محتوى إضافي */}
+        {childrenSlot && <Box>{childrenSlot}</Box>}
       </CardContent>
     </Card>
   );
 }
+
