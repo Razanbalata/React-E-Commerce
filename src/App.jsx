@@ -2,17 +2,21 @@ import { Box } from "@mui/material";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/home/HomePage";
-import Contact from "./pages/contact/contact";
-import About from "./pages/about/About";
+import React, { Suspense, lazy } from "react";
+
+const Contact = lazy(() => import("./pages/contact/Contact"));
+const About = lazy(() => import("./pages/about/About"));
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<HomePage />}/>
-        <Route path="/contact" element={<Contact />}/>
-        <Route path="/about" element={<About />}/>
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 }

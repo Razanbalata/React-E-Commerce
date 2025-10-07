@@ -34,7 +34,7 @@ function AboutHero() {
         <Image
           width="100%"
           height="100%"
-          src="/public/images/fcc89aaa7b85f8c1dcce81e71e2eb178be13bd4d.jpg"
+          src="/images/fcc89aaa7b85f8c1dcce81e71e2eb178be13bd4d.jpg"
           alt="About-hero"
           style={{ objectFit: "cover", borderRadius: "8px" }}
         />
