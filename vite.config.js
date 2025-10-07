@@ -6,13 +6,17 @@ export default defineConfig({
   build: {
     rollupOptions: {
       output: {
-        manualChunks: {
-          // تقسيم المكتبات الكبيرة إلى ملفات مستقلة
-          react: ["react", "react-dom"],
-          mui: ["@mui/material", "@emotion/react", "@emotion/styled"],
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            // كل باكج من node_modules بحطه في chunk خاص
+            return id
+              .toString()
+              .split("node_modules/")[1]
+              .split("/")[0]
+              .toString();
+          }
         },
       },
     },
-    chunkSizeWarningLimit: 1000, // لو بدك تخفي التحذير كليًا (اختياري)
   },
 });
