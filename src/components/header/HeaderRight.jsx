@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { Box, Drawer, IconButton } from "@mui/material";
+import { Box, Button, Drawer, IconButton } from "@mui/material";
 import SearchComp from "./SearchComp";
 import HeaderIcons from "../icons/HeaderIcons";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import BurgerDrawer from "./BurgerDrawer";
 
-const HeaderRight = () => {
+const HeaderRight = ({isLoggedIn, headerConfig }) => {
   const [open,setOpen] = useState(false)
 
    function toggleDrawer(open){
     setOpen(open)
    };
-
 
    return (<Box display="flex" alignItems="center" gap={1}>
     {/* Search يظهر على التابلت ويختفي على الموبايل */}
@@ -27,7 +26,11 @@ const HeaderRight = () => {
       </IconButton>
     </Box>
 
-    <HeaderIcons />
+    <Box display="flex" alignItems="center" gap={1}>
+      
+        <HeaderIcons {...headerConfig} />
+      
+    </Box>
 
     {/* Hamburger يظهر على الموبايل فقط */}
     <Box sx={{ display: { xs: "flex", md: "none" } }}>

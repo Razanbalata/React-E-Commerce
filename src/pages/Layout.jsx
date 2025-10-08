@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import HeaderDiv from "../components/header/HeaderDiv";
 import Footer from "../components/footer/Footer";
-import { Box,Container } from "@mui/material";
+import { Box, Container } from "@mui/material";
 
-function Layout({children}) {
+function Layout({ children, headerConfig }) {
+  // حالة تسجيل الدخول
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+
   return (
-    <Box overflow={"hidden"}>
-      <HeaderDiv />
+    <Box overflow="hidden">
+      <HeaderDiv
+        isLoggedIn={isLoggedIn}
+        headerConfig={headerConfig} // أي أيقونات تظهر
+      />
       <Container
         maxWidth="lg"
         sx={{

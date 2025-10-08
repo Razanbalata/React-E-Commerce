@@ -4,7 +4,7 @@ import SignContent from '../signup/SignContent';
 import LoginForm from './LoginForm'
 function Login() {
   return (
-    <Layout>
+    <Layout headerConfig={{showUser: false, showWishlist: false, showCart: false}}>
        <SignContent>
         <LoginForm/>
        </SignContent>

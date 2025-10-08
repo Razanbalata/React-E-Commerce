@@ -7,7 +7,7 @@ import SignForm from './SignForm';
 
 function SignUp() {
   return (
-    <Layout>
+    <Layout headerConfig={{showUser: false, showWishlist: false, showCart: false}}>
         <Box>
             <SignContent>
               <SignForm/>

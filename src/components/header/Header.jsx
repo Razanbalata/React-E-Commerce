@@ -3,7 +3,7 @@ import { Box, Divider } from "@mui/material";
 import HeaderLeft from "../header/HeaderLeft";
 import HeaderRight from "../header/HeaderRight";
 
-const Header = () => {
+const Header = ({isLoggedIn,headerConfig}) => {
   return (
     <Box>
       {/* Container الرئيسي */}
@@ -38,7 +38,9 @@ const Header = () => {
 
         {/* Right: Search + Icons + Hamburger */}
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
-          <HeaderRight />
+          <HeaderRight
+           isLoggedIn={isLoggedIn}
+        headerConfig={headerConfig}/>
         </Box>
       </Box>
 
