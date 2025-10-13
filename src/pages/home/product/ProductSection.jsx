@@ -12,6 +12,7 @@ function ProductSection({
   showButton = true,
   useIcon = true,
   showHr = false,
+  showFalshSale=true
 }) {
   return (
     <Container disableGutters>
@@ -20,13 +21,13 @@ function ProductSection({
         <SectionTitle text={title} />
 
         {/* الهيدر المخصص (FlashSaleHeader, ProductHeader, …) */}
-        <FlashSaleHeader
+        {showFalshSale && <FlashSaleHeader
           title={header}
           useIcon={useIcon}
           showIcons={showButton}
         >
           {headerContent}
-        </FlashSaleHeader>
+        </FlashSaleHeader>}
 
         {/* المنتجات */}
         {children}

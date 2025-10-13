@@ -3,7 +3,7 @@ import { Box, Button } from "@mui/material";
 
 function ButtonCom({ value, bg = "#DB4444", showOnMobile = false }) {
   return (
-    <Box>
+    <Box display={"flex"} flexShrink={0}>
       <Button
       type="submit"
         variant="contained"

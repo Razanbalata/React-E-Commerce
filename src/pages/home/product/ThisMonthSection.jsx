@@ -4,13 +4,14 @@ import { sectionTwoProducts } from "../../../components/data/data";
 import { Box, Rating, Typography } from "@mui/material";
 import ProductPrice from "./ProductPrice";
 import ProductActions from "./ProductActions";
-export default function ThisMonthSection() {
+export default function ThisMonthSection({showHead}) {
   return (
     <ProductSection
       title="This Month"
       header="Best Selling Products"
       useIcon={false}
       showButton={true}
+      showFalshSale={showHead}
     >
       <ProductGrid
         products={sectionTwoProducts}

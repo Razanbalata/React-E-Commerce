@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import BaseCard from "./BaseCard";
 import { Box } from "@mui/material";
 
@@ -17,7 +18,7 @@ export default function ProductGrid({
         pb: 1,
         scrollSnapType: peekHalf || wrap ? "mandatory" : "none",
         "&::-webkit-scrollbar": { display: "none" },
-        margin: "0 auto",
+        margin: "20px auto",
         minWidth: {
           xs: peekHalf ? "600px" : "500px",
           sm: peekHalf ? "900px" : "700px",

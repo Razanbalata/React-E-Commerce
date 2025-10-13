@@ -5,7 +5,7 @@ import { Box, Container } from "@mui/material";
 
 function Layout({ children, headerConfig }) {
   // حالة تسجيل الدخول
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);  
 
   return (
     <Box overflow="hidden">

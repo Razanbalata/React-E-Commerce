@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card, CardContent, Box, Typography, Button } from "@mui/material";
 import ProductImage from "./ProductImage";
 import CartIcon from "../../../components/icons/CartIcon";
 import { ShoppingCart } from "@mui/icons-material";
+import { Link } from "react-router-dom";
+import { GlobalContext } from "../../../contexts/GlobalContext ";
 
 export default function BaseCard({
   product,
-  actionsSlot,   // الأكشنز فوق
-  priceSlot,     // السعر الإضافي أو الخصم
-  ratingSlot,    // الريتنج
-  childrenSlot,  // أي محتوى إضافي (مثل البادج)
+  actionsSlot, // الأكشنز فوق
+  priceSlot, // السعر الإضافي أو الخصم
+  ratingSlot, // الريتنج
+  childrenSlot, // أي محتوى إضافي (مثل البادج)
   showAddToCartAlways = false, // 👈 جديد
+  
 }) {
+
+ const { addToCart } = useContext(GlobalContext);
+
   return (
     <Card
       sx={{
@@ -45,7 +51,9 @@ export default function BaseCard({
             textAlign: "center",
             py: 1,
             opacity: showAddToCartAlways ? 1 : 0,
-            transform: showAddToCartAlways ? "translateY(0)" : "translateY(20px)",
+            transform: showAddToCartAlways
+              ? "translateY(0)"
+              : "translateY(20px)",
             transition: "all 0.3s ease",
           }}
         >
@@ -57,8 +65,9 @@ export default function BaseCard({
               fontWeight: 500,
               fontSize: "0.9rem",
             }}
+            onClick={addToCart}
           >
-          <ShoppingCart/>  Add To Cart
+            <ShoppingCart /> Add To Cart
           </Button>
         </Box>
       </Box>
@@ -79,21 +88,23 @@ export default function BaseCard({
         </Box>
       )}
 
-      <CardContent sx={{ "&:last-child": { paddingBottom: 2 } }}>
-        {/* العنوان */}
-        <Typography variant="subtitle1" sx={{ mb: 1 }}>
-          {product.name}
-        </Typography>
+      <Link to="/productDetails">
+        <CardContent sx={{ "&:last-child": { paddingBottom: 2 } }}>
+          {/* العنوان */}
+          <Typography variant="subtitle1" sx={{ mb: 1 }}>
+            {product.name}
+          </Typography>
 
-        {/* السعر */}
-        {priceSlot && <Box mt={0.5}>{priceSlot}</Box>}
+          {/* السعر */}
+          {priceSlot && <Box mt={0.5}>{priceSlot}</Box>}
 
-        {/* الريتنج */}
-        {ratingSlot && <Box mt={1}>{ratingSlot}</Box>}
+          {/* الريتنج */}
+          {ratingSlot && <Box mt={1}>{ratingSlot}</Box>}
 
-        {/* أي محتوى إضافي */}
-        {childrenSlot && <Box>{childrenSlot}</Box>}
-      </CardContent>
+          {/* أي محتوى إضافي */}
+          {childrenSlot && <Box>{childrenSlot}</Box>}
+        </CardContent>
+      </Link>
     </Card>
   );
 }

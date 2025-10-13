@@ -1,3 +1,5 @@
+ 
+
 export const sectionOneProducts = [
   {
     id: 1,

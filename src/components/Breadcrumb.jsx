@@ -7,13 +7,14 @@ const Breadcrumb = ({ path = ["Home", "Contact"] }) => {
       display="flex"
       gap={1}
       mb={2}
-      px={{ xs: 2, sm: 2, md: 6,lg:0 }} // البادينغ يمين ويسار responsive
+      px={{ xs: 1, sm: 2, md: 4,lg:3 }} // البادينغ يمين ويسار responsive
+      flexWrap={"wrap"}
     >
       {path.map((item, idx) => (
         <React.Fragment key={idx}>
           {idx !== 0 && <Typography>/</Typography>}
           {idx < path.length - 1 ? (
-            <Link href="#" underline="hover" color="#000">
+            <Link href="#" underline="hover" color="#000" flexShrink={0}>
               {item}
             </Link>
           ) : (

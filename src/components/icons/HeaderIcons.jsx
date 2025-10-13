@@ -2,7 +2,10 @@ import React from "react";
 import WishlistIcon from "./WishlistIcon";
 import CartIcon from "./CartIcon";
 import UserIcon from "./UserIcon";
-import { Box } from "@mui/material";
+import { Badge, Box } from "@mui/material";
+import ColorBadge from "../../pages/home/product/Badge";
+import { Link } from "react-router-dom";
+import Cart from "../../pages/cart/Cart";
 
 const HeaderIcons = ({
   showUser = true,
@@ -42,7 +45,7 @@ const HeaderIcons = ({
         "&:hover svg": { color: style.hoverColor },
       }}
     >
-      <IconComp />
+      <IconComp/>
     </Box>
   );
 
