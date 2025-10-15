@@ -10,10 +10,12 @@ export default function ProductGrid({
   variant,
   renderSlots, // دالة ترجع object لكل كارد: { actionsSlot, priceSlot, ratingSlot, childrenSlot }
 }) {
+  // console.log(products)
   return (
     <Box
       sx={{
         overflowX: "auto",
+        overflowY:"hidden",
         width: "100%",
         pb: 1,
         scrollSnapType: peekHalf || wrap ? "mandatory" : "none",

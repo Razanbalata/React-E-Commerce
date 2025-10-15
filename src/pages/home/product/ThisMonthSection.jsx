@@ -4,7 +4,12 @@ import { sectionTwoProducts } from "../../../components/data/data";
 import { Box, Rating, Typography } from "@mui/material";
 import ProductPrice from "./ProductPrice";
 import ProductActions from "./ProductActions";
+import { useContext } from "react";
+import { ProductsContext } from "../../../contexts/ProductsContext";
 export default function ThisMonthSection({showHead}) {
+
+  const { products } = useContext(ProductsContext);
+
   return (
     <ProductSection
       title="This Month"
@@ -14,18 +19,18 @@ export default function ThisMonthSection({showHead}) {
       showFalshSale={showHead}
     >
       <ProductGrid
-        products={sectionTwoProducts}
+        products={products.slice(8,16)}
         columns={4}
-        wrap
+        wrap={false}
         renderSlots={(product) => ({
           // الأكشنز (wishlist + view)
           actionsSlot: <ProductActions />,
 
           priceSlot: (
             <ProductPrice
-              price={product.originalPrice}
-              originalPrice={product.originalPrice}
-              discount={product.discount}
+              price={product.price}
+              originalPrice={product.price}
+              discount={product.discountPercentage}
             />
           ),
           // الريتنج
@@ -38,7 +43,7 @@ export default function ThisMonthSection({showHead}) {
                 size="small"
               />
               <Typography variant="body2" color="text.secondary">
-                ({product.ratingCount})
+                ({product.stock})
               </Typography>
             </Box>
           ),

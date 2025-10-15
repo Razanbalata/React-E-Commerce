@@ -5,6 +5,7 @@ import CartIcon from "../../../components/icons/CartIcon";
 import { ShoppingCart } from "@mui/icons-material";
 import { Link } from "react-router-dom";
 import { GlobalContext } from "../../../contexts/GlobalContext ";
+import { ProductsContext } from "../../../contexts/ProductsContext";
 
 export default function BaseCard({
   product,
@@ -13,10 +14,8 @@ export default function BaseCard({
   ratingSlot, // الريتنج
   childrenSlot, // أي محتوى إضافي (مثل البادج)
   showAddToCartAlways = false, // 👈 جديد
-  
 }) {
-
- const { addToCart } = useContext(GlobalContext);
+   const { addToCart } = useContext(GlobalContext);
 
   return (
     <Card
@@ -36,7 +35,7 @@ export default function BaseCard({
     >
       {/* الصورة */}
       <Box sx={{ position: "relative" }}>
-        <ProductImage src={product.imageSrc} alt={product.imageAlt} />
+        <ProductImage src={product.images} alt={product.imageAlt} />
 
         {/* زر Add to Cart */}
         <Box
@@ -88,11 +87,11 @@ export default function BaseCard({
         </Box>
       )}
 
-      <Link to="/productDetails">
+      <Link to={`/productDetails/${product.id}`}>
         <CardContent sx={{ "&:last-child": { paddingBottom: 2 } }}>
           {/* العنوان */}
           <Typography variant="subtitle1" sx={{ mb: 1 }}>
-            {product.name}
+            {product.title}
           </Typography>
 
           {/* السعر */}
