@@ -6,11 +6,12 @@ import { sectionOneProducts } from "../../../components/data/data";
 import TimerDisplay from "./TimerDisplay";
 import { Rating, Typography, Box } from "@mui/material";
 import ProductPrice from "./ProductPrice";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { ProductsContext } from "../../../contexts/ProductsContext";
 
 export default function TodaySection() {
-  const { products } = useContext(ProductsContext);
+  const { products, gridRef, handleNext, handlePrev } =
+    useContext(ProductsContext);
 
   return (
     <ProductSection
@@ -18,8 +19,11 @@ export default function TodaySection() {
       headerContent={<TimerDisplay />}
       header="Flash Sales"
       showHr={true}
+      onPrev={handlePrev}
+      onNext={handleNext}
     >
       <ProductGrid
+        gridRef={gridRef}
         products={products.slice(0, 8)}
         columns={4.3}
         peekHalf={true}
@@ -54,7 +58,7 @@ export default function TodaySection() {
                 size="small"
               />
               <Typography variant="body2" color="text.secondary">
-                ({product.stock|| 0})
+                ({product.stock || 0})
               </Typography>
             </Box>
           ),

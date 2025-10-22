@@ -12,22 +12,28 @@ function ProductSection({
   showButton = true,
   useIcon = true,
   showHr = false,
-  showFalshSale=true
+  showFalshSale = true,
+  onNext,
+  onPrev
 }) {
   return (
     <Container disableGutters>
-      <Box padding={{xs:2,lg:0}}>
+      <Box padding={{ xs: 2, lg: 0 }}>
         {/* عنوان السيكشن */}
         <SectionTitle text={title} />
 
         {/* الهيدر المخصص (FlashSaleHeader, ProductHeader, …) */}
-        {showFalshSale && <FlashSaleHeader
-          title={header}
-          useIcon={useIcon}
-          showIcons={showButton}
-        >
-          {headerContent}
-        </FlashSaleHeader>}
+        {showFalshSale && (
+          <FlashSaleHeader
+            title={header}
+            useIcon={useIcon}
+            showIcons={showButton}
+            onNext={onNext}
+            onPrev={onPrev}
+          >
+            {headerContent}
+          </FlashSaleHeader>
+        )}
 
         {/* المنتجات */}
         {children}
@@ -38,11 +44,16 @@ function ProductSection({
             <ButtonCom value="View All Products" trans={showHr} />
           </Box>
         )}
-        {showHr && <Divider sx={{
-          borderColor: "rgba(0,0,0,0.1)",
-          my: 8,
-          width: "100%",
-        }}  fullWidth />}
+        {showHr && (
+          <Divider
+            sx={{
+              borderColor: "rgba(0,0,0,0.1)",
+              my: 8,
+              width: "100%",
+            }}
+            fullWidth
+          />
+        )}
       </Box>
     </Container>
   );

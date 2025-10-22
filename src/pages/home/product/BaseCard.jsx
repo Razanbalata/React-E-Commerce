@@ -90,7 +90,7 @@ export default function BaseCard({
       <Link to={`/productDetails/${product.id}`}>
         <CardContent sx={{ "&:last-child": { paddingBottom: 2 } }}>
           {/* العنوان */}
-          <Typography variant="subtitle1" sx={{ mb: 1 }}>
+          <Typography variant="subtitle1" fontSize={".9rem"} sx={{ mb: 1 }}>
             {product.title}
           </Typography>
 

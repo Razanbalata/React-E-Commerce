@@ -7,6 +7,8 @@ function FlashSaleHeader({
   title,
   useIcon = true,
   showIcons = true,
+  onNext,
+  onPrev
 }) {
   return (
     <Box
@@ -31,7 +33,7 @@ function FlashSaleHeader({
       </Box>
 
       {/* Right: Navigation Arrows or Button */}
-      {showIcons && <CustomAction useIcon={useIcon} />}
+      {showIcons && <CustomAction useIcon={useIcon} onNext={onNext} onPrev={onPrev}/>}
     </Box>
   );
 }

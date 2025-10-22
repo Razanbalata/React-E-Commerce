@@ -12,14 +12,17 @@ const items = [
   { id: 8, text: "Books", showIcon: false },
   { id: 9, text: "Automotive", showIcon: false },
 ];
-const ListBar = () => (
+const ListBar = ({ isInDrawer = false }) => (
   <Box
     width={{ lg: "20%" }}
-    borderRight="1px solid #ccc"
+    borderRight={{xs:"none",lg:"1px solid #ccc"}}
     pt={2}
     height="100%"
-    paddingLeft={0}
-    display={{xs:"none",lg:"block"}}
+    paddingLeft={isInDrawer?"20px":0}
+    display={{
+      xs: isInDrawer ? "flex" : "none",
+      lg: "flex",
+    }}
   >
     <List disablePadding>
       {items.map((item, index) => (

@@ -1,7 +1,7 @@
 import ProductSection from "../product/ProductSection";
 import ProductGrid from "../product/ProductGrid";
 import { sectionThreeProducts } from "../../../components/data/data";
-import { Box, Rating,Typography } from "@mui/material";
+import { Box, Rating, Typography } from "@mui/material";
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import ColorBadge from "../product/Badge";
 import ProductActions from "./ProductActions";
@@ -10,17 +10,19 @@ import { useContext } from "react";
 import { ProductsContext } from "../../../contexts/ProductsContext";
 
 export default function OurProductsSection() {
-
-    const { products } = useContext(ProductsContext);
-  
+  const { products, gridRef, handleNext, handlePrev } =
+    useContext(ProductsContext);
 
   return (
     <ProductSection
       title="Our Products"
       header="Explore Our Products"
       showButton
+      onPrev={handlePrev}
+      onNext={handleNext}
     >
       <ProductGrid
+      gridRef={gridRef}
         products={products.slice(16, 24)}
         columns={4}
         wrap
@@ -51,7 +53,12 @@ export default function OurProductsSection() {
                 discount={product.discountPercentage}
               />
               <Box display="flex" alignItems="center" gap={0.5}>
-                <Rating name="read-only" value={product.rating} readOnly size="small" />
+                <Rating
+                  name="read-only"
+                  value={product.rating}
+                  readOnly
+                  size="small"
+                />
                 <Typography variant="body2" color="text.secondary">
                   ({product.stock})
                 </Typography>

@@ -5,7 +5,7 @@ const ListItemBar = ({ text, showIcon }) => (
   <ListItem disablePadding>
     <ListItemButton sx={{ py: 0.5, pr: 2,pl:0 }}>
       <ListItemText primary={text} primaryTypographyProps={{ fontSize: 14 }} />
-      {showIcon && <ChevronRight fontSize="small" />}
+      {showIcon && <ChevronRight sx={{display:{xs:"none",lg:"block"}}} fontSize="small" />}
     </ListItemButton>
   </ListItem>
 );
