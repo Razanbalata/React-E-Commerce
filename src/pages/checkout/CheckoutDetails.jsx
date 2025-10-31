@@ -17,13 +17,13 @@ function CheckoutDetails() {
       id: 1,
       name: "Apple iPhone",
       price: 83.74,
-      img: "/public/images/New folder (2)/exploreImages/04a1915fd6cedd7c8b1073685c5f1be1b50e1ac6.png",
+      img: "/images/New folder (2)/exploreImages/04a1915fd6cedd7c8b1073685c5f1be1b50e1ac6.png",
     },
     {
       id: 2,
       name: "Samsung Galaxy",
       price: 97.14,
-      img: "/public/images/New folder (2)/salesImages/5e634682db5174aff99bb9337d2dc9598a0b44e4.png",
+      img: "/images/New folder (2)/salesImages/5e634682db5174aff99bb9337d2dc9598a0b44e4.png",
     },
   ];
 
@@ -108,22 +108,22 @@ function CheckoutDetails() {
             {/* القسم الثاني: صور طرق الدفع */}
             <Box display="flex" gap={1}>
               <img
-                src="/public/images/bacbff99a8fc8e50822cb2d2d168e5d0e8bf7ea6.png"
+                src="/images/bacbff99a8fc8e50822cb2d2d168e5d0e8bf7ea6.png"
                 alt="Visa"
                 width="40"
               />
               <img
-                src="/public/images/cfb0a6ee01b240273b40dab07f8246ef98aed88a.png"
+                src="/images/cfb0a6ee01b240273b40dab07f8246ef98aed88a.png"
                 alt="MasterCard"
                 width="40"
               />
               <img
-                src="/public/images/6eefb61d27c754abac218d25d8ea4360de61f8e8.png"
+                src="/images/6eefb61d27c754abac218d25d8ea4360de61f8e8.png"
                 alt="PayPal"
                 width="40"
               />
               <img
-                src="/public/images/b28e31b9c88d0c9b038b82deeb0523d82cffe267.png"
+                src="/images/b28e31b9c88d0c9b038b82deeb0523d82cffe267.png"
                 alt="PayPal"
                 width="40"
               />

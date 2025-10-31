@@ -24,7 +24,7 @@ export default function CartItem({ name, price, quantity }) {
       <Box display="flex" alignItems={{xs:"flex-start",sm:"center"}} flexDirection={{xs:"column",sm:"row"}} flex={{xs:.6,sm:1,md:.7}} gap={1}>
         <CardMedia
           component="img"
-          src="/public/images/New folder (2)/exploreImages/04a1915fd6cedd7c8b1073685c5f1be1b50e1ac6.png"
+          src="/images/New folder (2)/exploreImages/04a1915fd6cedd7c8b1073685c5f1be1b50e1ac6.png"
           alt={name}
           sx={{ width: 60, height: 60, objectFit: "cover", borderRadius: 1 }}
         />

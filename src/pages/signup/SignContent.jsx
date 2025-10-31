@@ -32,7 +32,7 @@ function SignContent({children}) {
       >
         <CardMedia
           component="img"
-          src="/public/images/75f394c0a1c7dc5b68a42239311e510f54d8cd59.jpg"
+          src="/images/75f394c0a1c7dc5b68a42239311e510f54d8cd59.jpg"
           alt="Sign Up Image"
           sx={{
             width: { xs: "100%", md: "919px" },
