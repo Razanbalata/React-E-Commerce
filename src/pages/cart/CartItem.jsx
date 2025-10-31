@@ -2,11 +2,18 @@
 import { Box, Typography, CardMedia } from "@mui/material";
 import { useState } from "react";
 import Counter from "./Counter";
+import { useContext } from "react";
+import { GlobalContext } from "../../contexts/GlobalContext ";
 
-export default function CartItem({ name, price, quantity }) {
-  const [qty, setQty] = useState(quantity);
-  const total = (price * qty).toFixed(2);
+export default function CartItem({ item }) {
+  const { updateQuantity } = useContext(GlobalContext);
+  const [qty, setQty] = useState(item.quantity);
+  const total = (item.price * qty).toFixed(2);
 
+   const handleChange = (newQty) => {
+    setQty(newQty);          // نحدث الـ state المحلي
+    updateQuantity(item.id, newQty); // نبعث للـ parent
+  };
   return (
     <Box
       display="flex"
@@ -24,11 +31,11 @@ export default function CartItem({ name, price, quantity }) {
       <Box display="flex" alignItems={{xs:"flex-start",sm:"center"}} flexDirection={{xs:"column",sm:"row"}} flex={{xs:.6,sm:1,md:.7}} gap={1}>
         <CardMedia
           component="img"
-          src="/images/New folder (2)/exploreImages/04a1915fd6cedd7c8b1073685c5f1be1b50e1ac6.png"
+          src={item.images[0]}
           alt={name}
           sx={{ width: 60, height: 60, objectFit: "cover", borderRadius: 1 }}
         />
-        <Typography>{name}</Typography>
+        <Typography>{item.title}</Typography>
       </Box>
 
       {/* الكمية + السعر + الإجمالي */}
@@ -42,10 +49,10 @@ export default function CartItem({ name, price, quantity }) {
         mt={{ xs: 1, md: 0 }}
       >
         <Box display="flex" flexDirection="column" alignItems="center">
-          <Typography>${price}</Typography>
+          <Typography>${item.price}</Typography>
         </Box>
         <Box display="flex" flexDirection="column" alignItems="center">
-          <Counter value={qty} onChange={setQty} />
+          <Counter value={qty} onChange={handleChange} />
         </Box>
 
         <Box display="flex" flexDirection="column" alignItems="center">

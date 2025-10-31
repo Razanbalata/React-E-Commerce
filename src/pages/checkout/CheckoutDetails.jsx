@@ -7,33 +7,24 @@ import {
   CardMedia,
   Divider,
 } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
 import CouponForm from "../cart/CouponForm";
 import ButtonCom from "../../components/buttons/ButtonCom";
+import { GlobalContext } from "../../contexts/GlobalContext ";
 
 function CheckoutDetails() {
-  const cartItems = [
-    {
-      id: 1,
-      name: "Apple iPhone",
-      price: 83.74,
-      img: "/images/New folder (2)/exploreImages/04a1915fd6cedd7c8b1073685c5f1be1b50e1ac6.png",
-    },
-    {
-      id: 2,
-      name: "Samsung Galaxy",
-      price: 97.14,
-      img: "/images/New folder (2)/salesImages/5e634682db5174aff99bb9337d2dc9598a0b44e4.png",
-    },
-  ];
+  const { cartItems } = useContext(GlobalContext);
 
-  const subtotal = cartItems.reduce((acc, item) => acc + item.price, 0);
+  const subtotal = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
   const shipping = 10;
   const total = subtotal + shipping;
 
   return (
-    <Box sx={{ flex: 1, p: 3, borderRadius: 2, height: "fit-content",pt:14 }}>
-    {cartItems.map((item) => (
+    <Box sx={{ flex: 1, p: 3, borderRadius: 2, height: "fit-content", pt: 14 }}>
+      {cartItems.map((item) => (
         <Box
           key={item.id}
           sx={{
@@ -46,44 +37,42 @@ function CheckoutDetails() {
           <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
             <CardMedia
               component="img"
-              src={item.img}
+              src={item.images[0]}
               alt={item.name}
               sx={{ width: 50, height: 50, borderRadius: 1 }}
             />
-            <Typography>{item.name}</Typography>
+            <Typography>{item.title}</Typography>
           </Box>
           <Typography>${item.price.toFixed(2)}</Typography>
         </Box>
       ))}
 
-       <Box
-      sx={{
-        borderRadius: "12px",
-        backgroundColor: "white",
-      }}
-    >
-      {/* Subtotal */}
-      <Box display="flex" justifyContent="space-between" mb={2}>
-        <Typography>Subtotal:</Typography>
-        <Typography fontWeight="bold">${subtotal.toFixed(2)}</Typography>
-      </Box>
-      <Divider sx={{ my: 1 }} />
+      <Box
+        sx={{
+          borderRadius: "12px",
+          backgroundColor: "white",
+        }}
+      >
+        {/* Subtotal */}
+        <Box display="flex" justifyContent="space-between" mb={2}>
+          <Typography>Subtotal:</Typography>
+          <Typography fontWeight="bold">${subtotal.toFixed(2)}</Typography>
+        </Box>
+        <Divider sx={{ my: 1 }} />
 
-      {/* Shipping */}
-      <Box display="flex" justifyContent="space-between" mb={2}>
-        <Typography>Shipping:</Typography>
-        <Typography fontWeight="bold">${shipping.toFixed(2)}</Typography>
-      </Box>
-      <Divider sx={{ my: 1 }} />
+        {/* Shipping */}
+        <Box display="flex" justifyContent="space-between" mb={2}>
+          <Typography>Shipping:</Typography>
+          <Typography fontWeight="bold">${shipping.toFixed(2)}</Typography>
+        </Box>
+        <Divider sx={{ my: 1 }} />
 
-      {/* Total */}
-      <Box display="flex" justifyContent="space-between" mt={2}>
-        <Typography fontWeight="bold">Total:</Typography>
-        <Typography fontWeight="bold">
-          ${total.toFixed(2)}
-        </Typography>
+        {/* Total */}
+        <Box display="flex" justifyContent="space-between" mt={2}>
+          <Typography fontWeight="bold">Total:</Typography>
+          <Typography fontWeight="bold">${total.toFixed(2)}</Typography>
+        </Box>
       </Box>
-    </Box>
 
       {/* Payment Options */}
       <Box>

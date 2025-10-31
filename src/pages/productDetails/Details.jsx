@@ -7,7 +7,7 @@ import {
   Rating,
   Divider,
 } from "@mui/material";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import { Autorenew } from "@mui/icons-material";
@@ -21,24 +21,55 @@ export default function Details() {
   const product = products.find((p) => p.id === parseInt(id));
   if (!product) return <Typography>Loading product details...</Typography>;
 
-  // الصور: إذا كانت أقل من 4، نكرر أول صورة حتى نكمل 4
-  const productImages = product.images || [product.thumbnail];
-  const images = Array.from({ length: 4 }, (_, i) => productImages[i] || productImages[0]);
-
-  const [mainImage, setMainImage] = useState(images[0]);
   const colors = product.colors || ["red", "blue", "green"];
   const sizes = product.sizes || ["XS", "S", "M", "L", "XL"];
-  const [selected, setSelected] = useState(sizes[0]);
-  const [count, setCount] = useState(1);
-  
-   console.log(product) 
+
+  const [selectedColor, setSelectedColor] = useState(localStorage.getItem(`color_${id}`) || colors[0]);
+  const [selectedSize, setSelectedSize] = useState(localStorage.getItem(`size_${id}`) || sizes[0]);
+  const [count, setCount] = useState(parseInt(localStorage.getItem(`count_${id}`)) || 1);
+
+  // الصور الجانبية (كلها نفس الصورة إذا ما في صور متعددة لكل لون)
+  const images = Array.from({ length: 4 }, () => product.thumbnail);
+  const [mainImage, setMainImage] = useState(images[1]);
+
+  useEffect(() => {
+    localStorage.setItem(`color_${id}`, selectedColor);
+  }, [selectedColor, id]);
+
+  useEffect(() => {
+    localStorage.setItem(`size_${id}`, selectedSize);
+  }, [selectedSize, id]);
+
+  useEffect(() => {
+    localStorage.setItem(`count_${id}`, count);
+  }, [count, id]);
+
+  useEffect(() => {
+  setMainImage(images[0]); // إعادة ضبط الصورة عند تغيير المنتج
+}, [product]);
 
   return (
-    <Box display="flex" flexDirection={{ xs: "column", md: "row" }} gap={{ xs: 3, md: 4 }} p={{ xs: 2, md: 4 }}>
+    <Box
+      display="flex"
+      flexDirection={{ xs: "column", md: "row" }}
+      gap={{ xs: 3, md: 4 }}
+      p={{ xs: 2, md: 4 }}
+    >
       {/* صور المنتج */}
-      <Box display="flex" flexDirection="row" gap={2} flex={1} justifyContent="center">
+      <Box
+        display="flex"
+        flexDirection="row"
+        gap={2}
+        flex={1}
+        justifyContent="center"
+      >
         {/* الصور الجانبية */}
-        <Box display="flex" flexDirection="column" gap={2} justifyContent="center">
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap={2}
+          justifyContent="space-between"
+        >
           {images.map((img, i) => (
             <CardMedia
               key={i}
@@ -56,31 +87,48 @@ export default function Details() {
           ))}
         </Box>
 
-        {/* الصورة الرئيسية */}
-        <Box width={{ xs: "100%", md: "500px" }} height={{ xs: 300, md: 600 }} flex={1}>
+        {/* الصورة الرئيسية مع إطار حسب اللون المختار */}
+        <Box
+          width={{ xs: "100%", md: "500px" }}
+          height={{ xs: 300, md: "100%" }}
+          flex={1}
+          sx={{
+            border: `4px solid ${selectedColor}`, // الإطار يتغير حسب اللون
+            overflow: "hidden",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <CardMedia
             component="img"
             src={mainImage}
-            sx={{
-              width: "100%",
-              height: "100%",
-              objectFit: "contain",
-              backgroundColor: "#f7f7f7",
-            }}
+            sx={{ width: "100%", height: "100%", objectFit: "contain" }}
           />
         </Box>
       </Box>
 
       {/* تفاصيل المنتج */}
-      <Box display="flex" flexDirection="column" gap={2} flex={{ xs: 1, md: 0.5 }}>
-        <Typography variant="h5" fontWeight="bold">{product.title}</Typography>
+      <Box
+        display="flex"
+        flexDirection="column"
+        gap={2}
+        flex={{ xs: 1, md: 0.5 }}
+      >
+        <Typography variant="h5" fontWeight="bold">
+          {product.title}
+        </Typography>
 
         <Box display="flex" alignItems="center" gap={1}>
           <Rating value={product.rating || 0} precision={0.5} readOnly />
-          <Typography variant="body2">({product.stock || 0} reviews)</Typography>
+          <Typography variant="body2">
+            ({product.stock || 0} reviews)
+          </Typography>
         </Box>
 
-        <Typography variant="h6" color="primary">${product.price}</Typography>
+        <Typography variant="h6" color="primary">
+          ${product.price}
+        </Typography>
         <Typography variant="body2">{product.description}</Typography>
 
         <Divider sx={{ margin: "10px 0" }} />
@@ -89,7 +137,22 @@ export default function Details() {
         <Box display="flex" alignItems="center" gap={1}>
           <Typography>Colors:</Typography>
           {colors.map((color, i) => (
-            <Box key={i} sx={{ width: 20, height: 20, bgcolor: color, borderRadius: "50%", cursor: "pointer", border: "1px solid #ccc" }} />
+            <Box
+              key={i}
+              sx={{
+                width: 20,
+                height: 20,
+                bgcolor: color,
+                borderRadius: "50%",
+                cursor: "pointer",
+                border:
+                  selectedColor === color
+                    ? "2px solid black"
+                    : "1px solid #ccc",
+                transition: "all 0.3s",
+              }}
+              onClick={() => setSelectedColor(color)}
+            />
           ))}
         </Box>
 
@@ -99,16 +162,17 @@ export default function Details() {
           {sizes.map((size) => (
             <Button
               key={size}
-              onClick={() => setSelected(size)}
+              onClick={() => setSelectedSize(size)}
               sx={{
                 minWidth: 30,
                 padding: "4px 8px",
                 fontSize: 12,
-                border: selected === size ? 0 : "1px solid #000",
-                backgroundColor: selected === size ? "#DB4444" : "transparent",
-                color: selected === size ? "white" : "black",
+                border: selectedSize === size ? 0 : "1px solid #000",
+                backgroundColor:
+                  selectedSize === size ? "#DB4444" : "transparent",
+                color: selectedSize === size ? "white" : "black",
                 "&:hover": {
-                  backgroundColor: selected === size ? "black" : "#f0f0f0",
+                  backgroundColor: selectedSize === size ? "black" : "#f0f0f0",
                 },
               }}
             >
@@ -119,25 +183,61 @@ export default function Details() {
 
         {/* الكمية + زر الشراء */}
         <Box display="flex" flexDirection="row" alignItems="center" gap={2}>
-          <Box display="flex" alignItems="center" border="1px solid #ccc" borderRadius={1}>
-            <Button sx={{ borderRight: "1px solid #ccc", minWidth: 30, borderRadius: 0 }} onClick={() => count > 1 && setCount(prev => prev - 1)}>-</Button>
+          <Box
+            display="flex"
+            alignItems="center"
+            border="1px solid #ccc"
+            borderRadius={1}
+          >
+            <Button
+              sx={{
+                borderRight: "1px solid #ccc",
+                minWidth: 30,
+                borderRadius: 0,
+              }}
+              onClick={() => count > 1 && setCount((prev) => prev - 1)}
+            >
+              -
+            </Button>
             <Typography mx={3}>{count}</Typography>
-            <Button sx={{ borderLeft: "1px solid #ccc", minWidth: 30, borderRadius: 0 }} onClick={() => setCount(prev => prev + 1)}>+</Button>
+            <Button
+              sx={{
+                borderLeft: "1px solid #ccc",
+                minWidth: 30,
+                borderRadius: 0,
+              }}
+              onClick={() => count < product.stock && setCount((prev) => prev + 1)}
+            >
+              +
+            </Button>
           </Box>
 
           <Box display="flex" gap={1}>
-            <Button variant="contained" sx={{ backgroundColor: "#DB4444" }}>Buy Now</Button>
-            <IconButton><FavoriteBorderIcon /></IconButton>
+            <Button variant="contained" sx={{ backgroundColor: "#DB4444" }}>
+              Buy Now
+            </Button>
+            <IconButton>
+              <FavoriteBorderIcon />
+            </IconButton>
           </Box>
         </Box>
 
         {/* معلومات التوصيل */}
-        <Box display="flex" flexDirection="column" gap={2} p={2} border="1px solid #ccc" borderRadius={1}>
+        <Box
+          display="flex"
+          flexDirection="column"
+          gap={2}
+          p={2}
+          border="1px solid #ccc"
+          borderRadius={1}
+        >
           <Box display="flex" alignItems="center" gap={2}>
             <LocalShippingIcon />
             <Box display="flex" flexDirection="column">
               <Typography variant="body2">Free Delivery</Typography>
-              <Typography variant="caption">Enter your postal code for delivery availability</Typography>
+              <Typography variant="caption">
+                Enter your postal code for delivery availability
+              </Typography>
             </Box>
           </Box>
 
@@ -147,7 +247,9 @@ export default function Details() {
             <Autorenew sx={{ fontSize: "30px" }} />
             <Box display="flex" flexDirection="column">
               <Typography variant="body2">Return Delivery</Typography>
-              <Typography variant="caption">Returns: 30-day money-back guarantee</Typography>
+              <Typography variant="caption">
+                Returns: 30-day money-back guarantee
+              </Typography>
             </Box>
           </Box>
         </Box>

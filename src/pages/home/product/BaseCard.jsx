@@ -16,7 +16,6 @@ export default function BaseCard({
   showAddToCartAlways = false, // 👈 جديد
 }) {
    const { addToCart } = useContext(GlobalContext);
-
   return (
     <Card
       sx={{
@@ -64,7 +63,10 @@ export default function BaseCard({
               fontWeight: 500,
               fontSize: "0.9rem",
             }}
-            onClick={addToCart}
+            onClick={()=>{
+              console.log(product)
+              addToCart(product)
+            }}
           >
             <ShoppingCart /> Add To Cart
           </Button>

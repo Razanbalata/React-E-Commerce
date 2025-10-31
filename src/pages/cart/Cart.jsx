@@ -1,5 +1,5 @@
 // Cart.jsx
-import React from "react";
+import React, { useContext, useState } from "react";
 import Layout from "../Layout";
 import Breadcrumb from "../../components/Breadcrumb";
 import { Box } from "@mui/material";
@@ -8,9 +8,16 @@ import CartItems from "./CartItems";
 import CartSummary from "./CartSummary";
 import CartButtons from "./CartButtons";
 import CouponForm from "./CouponForm";
+import { GlobalContext } from "../../contexts/GlobalContext ";
 
 export default function Cart() {
-  const subtotal = 83.74 + 97.14 + 68.71 + 85.21;
+  const { cartItems } = useContext(GlobalContext);
+
+  const subtotal = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
   const shipping = 55.47;
 
   return (
@@ -20,7 +27,7 @@ export default function Cart() {
         <Box py={3}>
           <Box display={"flex"} flexDirection="column" gap={2}>
             <CartHeader />
-            <CartItems />
+            <CartItems items={cartItems} />
           </Box>
 
           {/* أزرار التحكم */}
