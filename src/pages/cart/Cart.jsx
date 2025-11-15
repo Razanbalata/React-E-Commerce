@@ -8,18 +8,18 @@ import CartItems from "./CartItems";
 import CartSummary from "./CartSummary";
 import CartButtons from "./CartButtons";
 import CouponForm from "./CouponForm";
-import { GlobalContext } from "../../contexts/GlobalContext ";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 export default function Cart() {
   const { cartItems } = useContext(GlobalContext);
-
+  
   const subtotal = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
 
   const shipping = 55.47;
-
+ console.log(cartItems)
   return (
     <Layout>
       <Box padding={{ xs: "50px 20px", md: "50px 0 50px 15px" }}>

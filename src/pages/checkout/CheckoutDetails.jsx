@@ -10,7 +10,7 @@ import {
 import React, { useContext } from "react";
 import CouponForm from "../cart/CouponForm";
 import ButtonCom from "../../components/buttons/ButtonCom";
-import { GlobalContext } from "../../contexts/GlobalContext ";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 function CheckoutDetails() {
   const { cartItems } = useContext(GlobalContext);

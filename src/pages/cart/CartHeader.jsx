@@ -5,25 +5,57 @@ export default function CartHeader() {
   return (
     <Box
       display="flex"
-      flexDirection={{ xs: "row", md: "row" }}
+      alignItems="center"
       justifyContent="space-between"
       p={2.3}
       mt={1}
       boxShadow="0 0 3px rgba(0,0,0,0.3)"
       borderRadius={1}
-      gap={{ xs: 6, md: 1 }}
+      gap={2}
     >
-      <Typography fontWeight="bold" flex={1.1}>
+      {/* Product */}
+      <Typography
+        fontWeight="bold"
+        flex={2}
+        textAlign="left"
+      >
         Product
       </Typography>
-      <Typography fontWeight="bold" flex={{sx:1,sm:1,md:2}} textAlign={{ xs: "left",sm:"end" ,md: "center" }}>
+
+      {/* Price */}
+      <Typography
+        fontWeight="bold"
+        flex={1}
+        textAlign="center"
+      >
         Price
       </Typography>
-      <Typography fontWeight="bold" flex={{sx:1,sm:1,md:2}} textAlign={{ xs: "left",sm:"end", md: "center" }}>
+
+      {/* Quantity */}
+      <Typography
+        fontWeight="bold"
+        flex={1}
+        textAlign="center"
+      >
         Quantity
       </Typography>
-      <Typography fontWeight="bold" flex={1} textAlign={{ xs: "right", md: "right" }}>
+
+      {/* Total */}
+      <Typography
+        fontWeight="bold"
+        flex={1}
+        textAlign="center"
+      >
         Total
+      </Typography>
+
+      {/* Delete */}
+      <Typography
+        fontWeight="bold"
+        flex={1}
+        textAlign="center"
+      >
+        Delete
       </Typography>
     </Box>
   );

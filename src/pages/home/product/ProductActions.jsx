@@ -3,7 +3,7 @@ import { IconButton, Tooltip, Box } from "@mui/material";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { GlobalContext } from "../../../contexts/GlobalContext ";
+import { GlobalContext } from "../../../contexts/GlobalContext";
 
 export default function ProductActions({ type = "wishlist" }) {
   const iconStyle = {

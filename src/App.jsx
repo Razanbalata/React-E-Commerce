@@ -7,8 +7,9 @@ import Login from "./pages/login/Login";
 import Cart from "./pages/cart/Cart";
 import Checkout from "./pages/checkout/Checkout";
 import ProductDetails from "./pages/productDetails/ProductDetails";
-import { GlobalProvider } from "./contexts/GlobalContext ";
+import { GlobalProvider } from "./contexts/GlobalContext";
 import {ProductsProvider } from "./contexts/ProductsContext";
+import { Toaster } from "react-hot-toast";
 
 const Contact = lazy(() => import("./pages/contact/Contact"));
 const About = lazy(() => import("./pages/about/About"));
@@ -20,6 +21,7 @@ function App() {
       <ProductsProvider>
         <Router>
           <Suspense fallback={<div>Loading...</div>}>
+          <Toaster position="top-right" />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/about" element={<About />} />

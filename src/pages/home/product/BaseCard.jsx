@@ -4,8 +4,9 @@ import ProductImage from "./ProductImage";
 import CartIcon from "../../../components/icons/CartIcon";
 import { ShoppingCart } from "@mui/icons-material";
 import { Link } from "react-router-dom";
-import { GlobalContext } from "../../../contexts/GlobalContext ";
+import { GlobalContext } from "../../../contexts/GlobalContext";
 import { ProductsContext } from "../../../contexts/ProductsContext";
+import toast from "react-hot-toast";
 
 export default function BaseCard({
   product,
@@ -66,6 +67,7 @@ export default function BaseCard({
             onClick={()=>{
               console.log(product)
               addToCart(product)
+              toast.success(`${product.title} added to cart!`);
             }}
           >
             <ShoppingCart /> Add To Cart

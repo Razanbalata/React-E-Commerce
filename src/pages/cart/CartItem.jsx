@@ -1,63 +1,71 @@
-// CartItem.jsx
-import { Box, Typography, CardMedia } from "@mui/material";
-import { useState } from "react";
+import { Box, Typography, CardMedia, Button } from "@mui/material";
+import { useState, useContext } from "react";
 import Counter from "./Counter";
-import { useContext } from "react";
-import { GlobalContext } from "../../contexts/GlobalContext ";
+import { GlobalContext } from "../../contexts/GlobalContext";
 
 export default function CartItem({ item }) {
-  const { updateQuantity } = useContext(GlobalContext);
+  const { updateQuantity,removeFromCart } = useContext(GlobalContext);
   const [qty, setQty] = useState(item.quantity);
+
   const total = (item.price * qty).toFixed(2);
 
-   const handleChange = (newQty) => {
-    setQty(newQty);          // نحدث الـ state المحلي
-    updateQuantity(item.id, newQty); // نبعث للـ parent
+  const handleChange = (newQty) => {
+    setQty(newQty);
+    updateQuantity(item.id, newQty);
   };
+
   return (
     <Box
       display="flex"
-      flexDirection={{ xs: "row", md: "row" }}
+      alignItems="center"
       justifyContent="space-between"
-      alignItems={{ xs: "flex-start", md: "center" }}
       p={2}
       mt={1}
       boxShadow="0 0 5px rgba(0,0,0,0.2)"
       borderRadius={1}
       bgcolor="white"
-      gap={{ xs: 1, md: 0 }}
+      gap={2}
     >
-      {/* المنتج + صورة */}
-      <Box display="flex" alignItems={{xs:"flex-start",sm:"center"}} flexDirection={{xs:"column",sm:"row"}} flex={{xs:.6,sm:1,md:.7}} gap={1}>
+      {/* --- Product --- */}
+      <Box
+        display="flex"
+        alignItems="center"
+        gap={1}
+        flex={2}
+      >
         <CardMedia
           component="img"
           src={item.images[0]}
-          alt={name}
+          alt={item.title}
           sx={{ width: 60, height: 60, objectFit: "cover", borderRadius: 1 }}
         />
         <Typography>{item.title}</Typography>
       </Box>
 
-      {/* الكمية + السعر + الإجمالي */}
-      <Box
-        display="flex"
-        flexDirection={{ xs: "row", md: "row" }}
-        flex={1.5}
-        alignItems="center"
-        justifyContent="space-between"
-        gap={{ xs: 1, md: 0 }}
-        mt={{ xs: 1, md: 0 }}
-      >
-        <Box display="flex" flexDirection="column" alignItems="center">
-          <Typography>${item.price}</Typography>
-        </Box>
-        <Box display="flex" flexDirection="column" alignItems="center">
-          <Counter value={qty} onChange={handleChange} />
-        </Box>
+      {/* --- Price --- */}
+      <Box flex={1} textAlign="center">
+        <Typography>${item.price}</Typography>
+      </Box>
 
-        <Box display="flex" flexDirection="column" alignItems="center">
-          <Typography>${total}</Typography>
-        </Box>
+      {/* --- Quantity --- */}
+      <Box flex={1} display="flex" justifyContent="center">
+        <Counter value={qty} onChange={handleChange} />
+      </Box>
+
+      {/* --- Total --- */}
+      <Box flex={1} textAlign="center">
+        <Typography>${total}</Typography>
+      </Box>
+
+      {/* --- Delete --- */}
+      <Box flex={1} textAlign="center">
+        <Button
+          color="error"
+          onClick={()=>removeFromCart(item.id)}
+          sx={{ fontSize: "1.2rem" }}
+        >
+          ❌
+        </Button>
       </Box>
     </Box>
   );
