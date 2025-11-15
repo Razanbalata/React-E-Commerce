@@ -63,7 +63,13 @@ export const GlobalProvider = ({ children }) => {
   }, [state.cartItems]);
 
   const addToCart = (product) => dispatch({ type: "ADD_TO_CART", payload: product });
-  const removeFromCart = (id) => dispatch({ type: "REMOVE_FROM_CART", payload: id });
+  const removeFromCart = (id) => {
+    const confirmed = window.confirm("Are you sure you want to remove this item?");
+    if (confirmed) {
+      dispatch({ type: "REMOVE_FROM_CART", payload: id })
+    }
+    
+  };
   const updateQuantity = (id, quantity) =>
     dispatch({ type: "UPDATE_QUANTITY", payload: { id, quantity } });
   const addToWishlist = () => dispatch({ type: "ADD_TO_WISHLIST" });
