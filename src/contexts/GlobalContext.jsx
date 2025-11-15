@@ -1,4 +1,5 @@
 import React, { createContext, useReducer, useEffect } from "react";
+import toast from "react-hot-toast";
 
 export const GlobalContext = createContext();
 
@@ -68,6 +69,7 @@ export const GlobalProvider = ({ children }) => {
     if (confirmed) {
       dispatch({ type: "REMOVE_FROM_CART", payload: id })
     }
+    toast.success("Item removed from cart!");
     
   };
   const updateQuantity = (id, quantity) =>
