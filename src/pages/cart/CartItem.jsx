@@ -4,7 +4,7 @@ import Counter from "./Counter";
 import { GlobalContext } from "../../contexts/GlobalContext";
 
 export default function CartItem({ item }) {
-  const { updateQuantity,removeFromCart } = useContext(GlobalContext);
+  const { updateQuantity, removeFromCart } = useContext(GlobalContext);
   const [qty, setQty] = useState(item.quantity);
 
   const total = (item.price * qty).toFixed(2);
@@ -18,17 +18,22 @@ export default function CartItem({ item }) {
     <Box
       display="flex"
       alignItems="center"
-      justifyContent="space-between"
       p={2}
       mt={1}
       boxShadow="0 0 5px rgba(0,0,0,0.2)"
       borderRadius={1}
       bgcolor="white"
       gap={2}
+      sx={{
+        overflowX: { xs: "auto", md: "visible" },
+        whiteSpace: "nowrap",
+        minWidth: { xs: "100%", md: "auto" },
+      }}
     >
       {/* --- Product --- */}
       <Box
         display="flex"
+        flexWrap={{xs:"wrap",sm:"nowrap"}}
         alignItems="center"
         gap={1}
         flex={2}
@@ -61,7 +66,7 @@ export default function CartItem({ item }) {
       <Box flex={1} textAlign="center">
         <Button
           color="error"
-          onClick={()=>removeFromCart(item.id)}
+          onClick={() => removeFromCart(item.id)}
           sx={{ fontSize: "1.2rem" }}
         >
           ❌

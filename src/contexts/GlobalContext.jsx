@@ -68,8 +68,9 @@ export const GlobalProvider = ({ children }) => {
     const confirmed = window.confirm("Are you sure you want to remove this item?");
     if (confirmed) {
       dispatch({ type: "REMOVE_FROM_CART", payload: id })
+      toast.success("Item removed from cart!");
     }
-    toast.success("Item removed from cart!");
+    
     
   };
   const updateQuantity = (id, quantity) =>
